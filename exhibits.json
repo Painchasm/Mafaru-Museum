@@ -19,6 +19,15 @@
       "featured": false,
       "placard": "Ding Dong Pookie",
       "lore": "Too famous"
+    },
+    {
+      "title": "6k in Bank",
+      "wing": "seaside",
+      "image": "/images/broke-no-money.png",
+      "place": "in my own poverty",
+      "year": 2024,
+      "featured": true,
+      "lore": "Ever since the great greed of 2024, the bank balance remained constant. Poverty never made its own mind to leave."
     }
   ]
 }
