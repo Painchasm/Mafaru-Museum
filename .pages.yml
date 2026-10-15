@@ -1,0 +1,136 @@
+# Pages CMS config for The Mafaru Museum
+# Sign in at https://app.pagescms.org and open this repo.
+
+media:
+  input: images
+  output: /images
+  rename: safe
+
+content:
+  - name: exhibits
+    label: Memories
+    type: file
+    path: data/exhibits.json
+    format: json
+    fields:
+      - name: exhibits
+        label: Memories
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: wing
+            label: Where does it hang?
+            type: select
+            description: "street = everyday snapshots (film strip), cafe = Hall of Fame, seaside = big scenic moments, alley = secret (needs the password)"
+            options:
+              values: [street, cafe, seaside, alley]
+          - name: image
+            label: Picture
+            type: image
+          - name: place
+            label: Place (where it happened)
+            type: string
+          - name: date
+            label: Date it happened
+            type: date
+            default: ""
+            options:
+              format: "yyyy-MM-dd"
+          - name: year
+            label: Year (only needed if you skip the date)
+            type: number
+          - name: featured
+            label: Show on the front page
+            type: boolean
+          - name: placard
+            label: Short caption
+            type: string
+          - name: lore
+            label: The story behind it
+            type: text
+
+  - name: portraits
+    label: Travelers
+    type: file
+    path: data/portraits.json
+    format: json
+    fields:
+      - name: portraits
+        label: Travelers
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - name: name
+            label: Name
+            type: string
+          - name: title
+            label: Fake title
+            type: string
+          - name: image
+            label: Photo
+            type: image
+          - name: contribution
+            label: What they are known for
+            type: text
+
+  - name: quotes
+    label: Postcards (quotes)
+    type: file
+    path: data/quotes.json
+    format: json
+    fields:
+      - name: quotes
+        label: Quotes
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{author}"
+        fields:
+          - name: text
+            label: The quote
+            type: text
+          - name: author
+            label: Who said it
+            type: string
+          - name: year
+            label: Year
+            type: number
+
+  - name: settings
+    label: Museum settings
+    type: file
+    path: data/settings.json
+    format: json
+    fields:
+      - name: museumName
+        label: Museum name
+        type: string
+      - name: established
+        label: Year established
+        type: string
+      - name: tagline
+        label: Tagline
+        type: string
+      - name: currentExhibition
+        label: Ticket banner on the front page
+        type: string
+      - name: restrictedPassword
+        label: Night Alley password
+        type: string
+      - name: restrictedHint
+        label: Night Alley hint
+        type: string
+      - name: guardLines
+        label: Things the station cat says
+        type: string
+        list: true
