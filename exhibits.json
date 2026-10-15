@@ -29,6 +29,16 @@
       "featured": true,
       "placard": "can you lend me some money - 6k in bank man. Buje korga.",
       "lore": "Ever since the great greed of 2024, the bank balance remained constant. Poverty never made its own mind to leave."
+    },
+    {
+      "title": "Winter Time Happiness",
+      "wing": "seaside",
+      "image": "/images/maxresdefault.jpg",
+      "place": "Front of Ayesha's house",
+      "year": 2025,
+      "featured": true,
+      "placard": "Fighting my demons, it wins all the time.",
+      "lore": "Cheese balls got fermented and legs stopped functioning. His core was too armored from the organic view."
     }
   ]
 }
