@@ -25,3 +25,5 @@ edited without code through Pages CMS.
 2. If the site shows a yellow notice at the top, it names the exact file with the problem.
 3. A picture shows "Can't find ..."? The path saved in Pages CMS doesn't match a file in `images/`.
 4. After saving in Pages CMS, wait 1 to 2 minutes, then hard refresh (Ctrl+Shift+R).
+
+halo
