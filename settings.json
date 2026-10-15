@@ -1,8 +1,8 @@
 {
-  "museumName": "The Mafaru Museum",
-  "established": "2024",
+  "museumName": "The Mafaru Diaries",
+  "established": "2026",
   "tagline": "A little trip through the moments only we understand.",
-  "currentExhibition": "Now boarding: add your first memory in Pages CMS.",
+  "currentExhibition": "Board the train and explore the journey.",
   "restrictedPassword": "mafaru",
   "restrictedHint": "Hint: the name on the ticket, all lowercase.",
   "guardLines": [
