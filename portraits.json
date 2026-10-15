@@ -3,12 +3,14 @@
     {
       "name": "Painchasm",
       "title": "Navigator",
-      "contribution": "Founded the museum and keeps the map."
+      "image": "/images/il300x3006939111549fh1v.webp",
+      "contribution": "Founded the museum with 6k in bank."
     },
     {
       "name": "Draco",
       "title": "Navigator",
-      "contribution": "Responsible for the best finds and the worst detours."
+      "image": "/images/hq0mjjhawaaqaqu.webp",
+      "contribution": "The OG traveler, responsible for the best finds."
     }
   ]
 }
