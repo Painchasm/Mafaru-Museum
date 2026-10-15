@@ -1,3 +1,14 @@
 {
-  "exhibits": []
+  "exhibits": [
+    {
+      "title": "Abdul",
+      "wing": "street",
+      "image": "/images/e958749a-67a6-46c2-af39-3cfb7905f029-1.png",
+      "place": "Dubai",
+      "year": 2026,
+      "featured": true,
+      "placard": "Abdul, The Man of Greatness",
+      "lore": "He is in search of Ruhma, yet he keeps escaping her."
+    }
+  ]
 }
