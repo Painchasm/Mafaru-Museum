@@ -9,6 +9,16 @@
       "featured": true,
       "placard": "Abdul, The Man of Greatness",
       "lore": "He is in search of Ruhma, yet he keeps escaping her."
+    },
+    {
+      "title": "Biddy Blas",
+      "wing": "street",
+      "image": "/images/images-1.jpg",
+      "place": "Planet Croce",
+      "year": 2024,
+      "featured": false,
+      "placard": "Ding Dong Pookie",
+      "lore": "Too famous"
     }
   ]
 }
