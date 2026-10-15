@@ -10,7 +10,7 @@ content:
   - name: exhibits
     label: Memories
     type: file
-    path: data/exhibits.json
+    path: exhibits.json
     format: json
     fields:
       - name: exhibits
@@ -58,7 +58,7 @@ content:
   - name: portraits
     label: Travelers
     type: file
-    path: data/portraits.json
+    path: portraits.json
     format: json
     fields:
       - name: portraits
@@ -85,7 +85,7 @@ content:
   - name: quotes
     label: Postcards (quotes)
     type: file
-    path: data/quotes.json
+    path: quotes.json
     format: json
     fields:
       - name: quotes
@@ -109,7 +109,7 @@ content:
   - name: settings
     label: Museum settings
     type: file
-    path: data/settings.json
+    path: settings.json
     format: json
     fields:
       - name: museumName

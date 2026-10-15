@@ -64,26 +64,31 @@
     return [];
   }
 
+  // Looks in data/ first, then next to index.html, so either layout works.
   async function load(name) {
-    var res;
-    try {
-      res = await fetch("data/" + name + ".json?v=" + Date.now());
-    } catch (e) {
-      if (location.protocol === "file:") {
-        problems.push("You opened index.html straight from your computer, so the browser blocks the data files. View the GitHub Pages link instead, or run a local server.");
-      } else {
-        problems.push("Could not reach data/" + name + ".json (" + e.message + ").");
+    var urls = ["data/" + name + ".json", name + ".json"];
+    var res = null;
+    for (var i = 0; i < urls.length; i++) {
+      try {
+        res = await fetch(urls[i] + "?v=" + Date.now());
+      } catch (e) {
+        if (location.protocol === "file:") {
+          problems.push("You opened index.html straight from your computer, so the browser blocks the data files. View the GitHub Pages link instead.");
+        } else {
+          problems.push("Could not reach " + urls[i] + " (" + e.message + ").");
+        }
+        return null;
       }
-      return null;
+      if (res.ok) break;
     }
-    if (!res.ok) {
-      problems.push("Could not find data/" + name + ".json (error " + res.status + "). Check that the data folder sits next to index.html in your GitHub repo and the file is named exactly " + name + ".json.");
+    if (!res || !res.ok) {
+      problems.push("Could not find " + name + ".json. Upload it to your GitHub repo next to index.html (same place as app.js).");
       return null;
     }
     try {
       return await res.json();
     } catch (e) {
-      problems.push("data/" + name + ".json is not valid JSON (" + e.message + "). Open it on GitHub and look for a missing comma or quote, or re-save it from Pages CMS.");
+      problems.push(name + ".json is not valid JSON (" + e.message + "). Open it on GitHub and look for a missing comma or quote, or re-save it from Pages CMS.");
       return null;
     }
   }

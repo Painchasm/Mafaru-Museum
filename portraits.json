@@ -1,0 +1,14 @@
+{
+  "portraits": [
+    {
+      "name": "Painchasm",
+      "title": "Lead Navigator",
+      "contribution": "Founded the museum and keeps the map."
+    },
+    {
+      "name": "Draco",
+      "title": "Chief Snack Officer",
+      "contribution": "Responsible for the best finds and the worst detours."
+    }
+  ]
+}
