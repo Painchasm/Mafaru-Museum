@@ -58,6 +58,16 @@
       "featured": false,
       "placard": "Bird shot",
       "lore": "No story jus vibes"
+    },
+    {
+      "title": "Azeri sky",
+      "wing": "billboard",
+      "image": "/images/img20260517201733.jpg",
+      "place": "Azerbaijan",
+      "year": 2026,
+      "featured": false,
+      "placard": "By Mahmood",
+      "lore": "Radiance"
     }
   ]
 }
