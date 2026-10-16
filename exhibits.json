@@ -51,15 +51,6 @@
       "lore": "When DORO was DORO so DORO DORO DORO but DORO went DORO. Ever since DORO DORO DORO DORO DORO DORO. DORO and DORO in DORO with DORO did DORO and DORO made more DOROS. End of DORO. DORO DORO DORO DORO."
     },
     {
-      "title": "Sky",
-      "wing": "billboard",
-      "image": "/images/img1553.jpg",
-      "place": "no where",
-      "featured": false,
-      "placard": "Bird shot",
-      "lore": "No story jus vibes"
-    },
-    {
       "title": "Azeri sky",
       "wing": "billboard",
       "image": "/images/img20260517201733.jpg",
@@ -68,6 +59,15 @@
       "featured": false,
       "placard": "By Mahmood",
       "lore": "Radiance"
+    },
+    {
+      "title": "Sky",
+      "wing": "billboard",
+      "image": "/images/img1553.jpg",
+      "place": "no where",
+      "featured": false,
+      "placard": "Bird shot",
+      "lore": "No story jus vibes"
     }
   ]
 }
