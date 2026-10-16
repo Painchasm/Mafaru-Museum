@@ -1,6 +1,26 @@
 {
   "exhibits": [
     {
+      "title": "Biddy Blas",
+      "wing": "cafe",
+      "image": "/images/images-1.jpg",
+      "place": "Planet Croce",
+      "year": 2026,
+      "featured": true,
+      "placard": "Ding Dong Pookie",
+      "lore": "Too famous"
+    },
+    {
+      "title": "DORO",
+      "wing": "cafe",
+      "image": "/images/images-2.jpg",
+      "place": "Korea",
+      "year": 0,
+      "featured": true,
+      "placard": "\"Orange\" DORO",
+      "lore": "When DORO was DORO so DORO DORO DORO but DORO went DORO. Ever since DORO DORO DORO DORO DORO DORO. DORO and DORO in DORO with DORO did DORO and DORO made more DOROS. End of DORO. DORO DORO DORO DORO."
+    },
+    {
       "title": "Abdul",
       "wing": "street",
       "image": "/images/e958749a-67a6-46c2-af39-3cfb7905f029-1.png",
@@ -10,16 +30,6 @@
       "featured": true,
       "placard": "Abdul, The Man of Greatness",
       "lore": "He is in search of Ruhma, yet he keeps escaping her."
-    },
-    {
-      "title": "Biddy Blas",
-      "wing": "cafe",
-      "image": "/images/images-1.jpg",
-      "place": "Planet Croce",
-      "year": 2026,
-      "featured": false,
-      "placard": "Ding Dong Pookie",
-      "lore": "Too famous"
     },
     {
       "title": "6k in Bank",
@@ -40,16 +50,6 @@
       "featured": true,
       "placard": "Fighting my demons, it wins all the time.",
       "lore": "Cheese balls got fermented and legs stopped functioning. His core was too armored from the organic view."
-    },
-    {
-      "title": "DORO",
-      "wing": "cafe",
-      "image": "/images/images-2.jpg",
-      "place": "Korea",
-      "year": 0,
-      "featured": true,
-      "placard": "\"Orange\" DORO",
-      "lore": "When DORO was DORO so DORO DORO DORO but DORO went DORO. Ever since DORO DORO DORO DORO DORO DORO. DORO and DORO in DORO with DORO did DORO and DORO made more DOROS. End of DORO. DORO DORO DORO DORO."
     },
     {
       "title": "Azeri sky",
