@@ -601,16 +601,15 @@ mark { padding: 0 1px; color: inherit; background: #ffe08a; border-radius: 2px; 
 
 /* Add-memory link above the cat */
 .add-link {
-  position: fixed; right: 1rem; bottom: calc(1rem + 66px + .7rem); z-index: 35;
-  display: flex; align-items: center; gap: .4rem; padding: .5rem .95rem;
-  font-family: var(--hand); font-weight: 600; font-size: .95rem; text-decoration: none; color: #fff;
-  background: var(--red); border: 2px solid var(--red-deep); border-radius: 999px;
+  position: fixed; right: calc(1rem + 9px); bottom: calc(1rem + 66px + .6rem); z-index: 35;
+  display: grid; place-items: center; width: 48px; height: 48px; color: #fff;
+  background: var(--red); border: 2px solid var(--red-deep); border-radius: 50%;
   box-shadow: 0 6px 14px rgba(0, 0, 0, .3); transition: translate .15s, background .2s;
 }
 .add-link:hover { background: #e65a3d; translate: 0 -2px; }
-.add-link svg { width: 16px; height: 16px; }
-.cat[hidden] ~ .add-link { bottom: 1rem; }
+.add-link svg { width: 22px; height: 22px; }
+.cat[hidden] ~ .add-link { bottom: 1rem; right: calc(1rem + 9px); }
 @media (max-width: 760px) {
-  .add-link { bottom: calc(1rem + 58px + .7rem); padding: .45rem .8rem; font-size: .9rem; }
-  .cat[hidden] ~ .add-link { bottom: 1rem; }
+  .add-link { width: 42px; height: 42px; right: calc(1rem + 8px); bottom: calc(1rem + 58px + .6rem); }
+  .cat[hidden] ~ .add-link { bottom: 1rem; right: calc(1rem + 8px); }
 }
