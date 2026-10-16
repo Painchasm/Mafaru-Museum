@@ -1,27 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="day">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Mafaru Museum</title>
-<meta name="description" content="A seaside journey through one friend group's inside jokes.">
+<meta name="description" content="A seaside journey through one friend group's inside jokes, photos and memories.">
+<meta property="og:title" content="The Mafaru Museum">
+<meta property="og:description" content="A seaside journey through one friend group's inside jokes, photos and memories.">
+<meta name="theme-color" content="#7fc0ec">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d9472b'/%3E%3Crect x='10' y='20' width='44' height='30' rx='7' fill='white'/%3E%3Crect x='22' y='12' width='16' height='10' rx='3' fill='white'/%3E%3Ccircle cx='32' cy='35' r='9' fill='%23d9472b'/%3E%3Ccircle cx='32' cy='35' r='4.5' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Klee+One:wght@400;600&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip" href="#street">Skip to the memories</a>
 
-<header class="topbar">
-  <a class="brand" href="#top" id="navName">The Mafaru Museum</a>
-  <nav aria-label="Stops on the journey">
-    <a href="#street">The Street</a>
-    <a href="#cafe">Hall of Fame Cafe</a>
-    <a href="#seaside">Seaside</a>
-    <a href="#travelers">Travelers</a>
-    <a href="#postcards">Postcards</a>
-    <a href="#alley">Night Alley</a>
+<header class="topbar" id="topbar">
+  <a class="brand" href="#top">
+    <svg class="brand-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="9" width="26" height="18" rx="4" fill="currentColor"/><rect x="10" y="5" width="10" height="6" rx="2" fill="currentColor"/><circle cx="16" cy="18" r="6.4" fill="#f7f2e5"/><circle cx="16" cy="18" r="3.6" fill="currentColor"/></svg>
+    <span id="navName">The Mafaru Museum</span>
+  </a>
+  <nav id="nav" aria-label="Stops on the journey">
+    <a href="#street" data-s="street">Street</a>
+    <a href="#cafe" data-s="cafe">Hall of Fame</a>
+    <a href="#seaside" data-s="seaside">Seaside</a>
+    <a href="#travelers" data-s="travelers">Travelers</a>
+    <a href="#postcards" data-s="postcards">Postcards</a>
+    <a href="#billboard" data-s="billboard">Billboard</a>
+    <a href="#albums" data-s="albums">Albums</a>
   </nav>
+  <button class="search-btn" id="searchBtn" type="button" aria-label="Search memories">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    <span>Search</span><kbd>/</kbd>
+  </button>
 </header>
 
 <div class="notice" id="notice" hidden role="alert">
@@ -29,7 +42,11 @@
   <button type="button" id="noticeClose" aria-label="Dismiss message">Dismiss</button>
 </div>
 
+<div class="nightsky" id="nightsky" aria-hidden="true"></div>
+
+<div id="site">
 <main>
+
   <!-- DEPARTURE -->
   <section class="departure" id="top">
     <svg class="wires" viewBox="0 0 1600 300" preserveAspectRatio="none" aria-hidden="true">
@@ -37,52 +54,127 @@
       <path d="M-50 105 Q800 190 1650 78" />
       <path d="M-50 190 Q800 290 1650 160" class="thin"/>
     </svg>
-    <div class="pole left" aria-hidden="true"></div>
-    <div class="pole right" aria-hidden="true"></div>
+    <div class="pole left" aria-hidden="true"><i></i><i></i></div>
+    <div class="pole right" aria-hidden="true"><i></i><i></i></div>
 
     <svg class="scene" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
       <defs>
-        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#58b0e0"/><stop offset="1" stop-color="#1c6a9f"/></linearGradient>
-        <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fc0da"/><stop offset="1" stop-color="#cfe4f2"/></linearGradient>
+        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86c9ee"/><stop offset=".35" stop-color="#3f9bd1"/><stop offset="1" stop-color="#1a5f93"/></linearGradient>
+        <linearGradient id="fuji" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fb0cf"/><stop offset="1" stop-color="#c3d8ea"/></linearGradient>
+        <linearGradient id="ridge" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a3bfd8"/><stop offset="1" stop-color="#cfe1ef"/></linearGradient>
+        <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#58985f"/><stop offset="1" stop-color="#2f6b47"/></linearGradient>
+        <linearGradient id="rock" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9a8369"/><stop offset="1" stop-color="#5d4a3a"/></linearGradient>
+        <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3e6c8"/><stop offset="1" stop-color="#d6c196"/></linearGradient>
+        <linearGradient id="road" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#66717b"/><stop offset="1" stop-color="#454f58"/></linearGradient>
+        <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff8dc" stop-opacity=".9"/><stop offset=".6" stop-color="#fff8dc" stop-opacity="0"/></radialGradient>
+        <filter id="soft" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+        <symbol id="fl" viewBox="-12 -12 24 24"><g fill="#ffc6d8"><circle cx="0" cy="-6.5" r="5.2"/><circle cx="6.2" cy="-2" r="5.2"/><circle cx="3.8" cy="5.3" r="5.2"/><circle cx="-3.8" cy="5.3" r="5.2"/><circle cx="-6.2" cy="-2" r="5.2"/></g><circle r="2.4" fill="#ff8fb2"/></symbol>
       </defs>
-      <g fill="#fff" opacity=".85">
-        <ellipse cx="260" cy="215" rx="150" ry="26"/><ellipse cx="360" cy="195" rx="90" ry="24"/>
-        <ellipse cx="1180" cy="235" rx="170" ry="24"/><ellipse cx="1290" cy="216" rx="90" ry="22"/>
-        <ellipse cx="760" cy="180" rx="120" ry="18"/>
+
+      <circle cx="420" cy="300" r="200" fill="url(#glow)"/>
+      <circle cx="420" cy="300" r="42" fill="#fffbe8"/>
+
+      <path d="M880 392 C960 336 1012 254 1060 198 L1076 186 L1112 186 L1128 198 C1180 254 1232 336 1322 392Z" fill="url(#fuji)"/>
+      <path d="M1052 208 L1076 186 L1112 186 L1136 208 L1118 220 L1104 204 L1092 226 L1080 206 L1066 222Z" fill="#fff" opacity=".95"/>
+      <path d="M0 396 C120 352 220 362 320 388 C440 342 560 352 680 396 C800 362 900 372 1000 400 C1120 354 1240 362 1360 396 C1460 368 1540 374 1600 392 V450 H0Z" fill="url(#ridge)" opacity=".9"/>
+
+      <g class="cloud c1" filter="url(#soft)" fill="#fff" opacity=".92"><ellipse cx="240" cy="206" rx="150" ry="22"/><ellipse cx="338" cy="190" rx="88" ry="26"/><ellipse cx="170" cy="192" rx="72" ry="19"/></g>
+      <g class="cloud c2" filter="url(#soft)" fill="#fff" opacity=".9"><ellipse cx="1290" cy="236" rx="170" ry="21"/><ellipse cx="1380" cy="220" rx="92" ry="24"/></g>
+      <g class="cloud c3" filter="url(#soft)" fill="#fff" opacity=".8"><ellipse cx="780" cy="178" rx="120" ry="16"/><ellipse cx="840" cy="168" rx="64" ry="18"/></g>
+
+      <g class="birds" stroke="#34495e" stroke-width="2.4" fill="none" stroke-linecap="round">
+        <path d="M560 262 q9 -9 18 0 q9 -9 18 0"/><path d="M612 244 q7 -7 14 0 q7 -7 14 0"/><path d="M1000 290 q8 -8 16 0 q8 -8 16 0"/>
       </g>
-      <path d="M0 340 L120 280 L250 312 L420 226 L560 300 L700 258 L860 322 L1030 246 L1190 312 L1350 256 L1490 308 L1600 274 V430 H0Z" fill="url(#haze)"/>
-      <path d="M0 420 C40 350 130 318 210 338 C270 350 310 380 340 420Z" fill="#437f52"/>
-      <path d="M62 342 L67 262 H73 L78 342Z" fill="#e3edf4"/><ellipse cx="70" cy="254" rx="10" ry="7" fill="#9ec3dc"/>
-      <g fill="#efe6d2"><rect x="150" y="372" width="34" height="22"/><rect x="196" y="380" width="28" height="18"/></g>
-      <g fill="#5d8f7e"><path d="M146 372 L167 356 L188 372Z"/><path d="M192 380 L210 366 L228 380Z"/></g>
-      <path d="M1380 500 C1400 410 1470 384 1530 402 C1575 414 1600 446 1600 500Z" fill="#4f8d5a"/>
-      <path d="M1400 500 C1420 450 1480 440 1530 452 C1570 462 1590 480 1600 500Z" fill="#85705a"/>
-      <rect y="420" width="1600" height="260" fill="url(#sea)"/>
-      <g stroke="#fff" stroke-width="3" fill="none" opacity=".6" stroke-linecap="round">
-        <path d="M120 470 q20 -10 40 0 t40 0"/><path d="M420 500 q22 -10 44 0 t44 0"/>
-        <path d="M820 470 q22 -10 44 0 t44 0"/><path d="M1120 520 q22 -10 44 0 t44 0"/>
-        <path d="M600 560 q24 -10 48 0 t48 0"/><path d="M1300 580 q24 -10 48 0 t48 0"/>
-        <path d="M260 600 q24 -10 48 0 t48 0"/>
+
+      <rect y="404" width="1600" height="40" fill="#eef6fb" opacity=".6" filter="url(#soft)"/>
+      <rect y="424" width="1600" height="270" fill="url(#sea)"/>
+      <g stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".75" class="glints">
+        <path d="M410 440 h22 M392 456 h56 M384 474 h72 M398 494 h50 M378 514 h90 M394 538 h62 M404 562 h44"/>
       </g>
-      <g fill="#59646c"><path d="M700 540 l30 -22 l40 6 l38 -10 l50 20 l-20 14 h-130z"/></g>
-      <path d="M0 650 Q400 620 800 640 T1600 630 V690 H0Z" fill="#e5d6b5"/>
-      <rect y="684" width="1600" height="80" fill="#59666f"/>
-      <g stroke="#fff" stroke-width="5" opacity=".85"><path d="M0 726 H80 M160 726 H240 M320 726 H400 M480 726 H560 M640 726 H720 M800 726 H880 M960 726 H1040 M1120 726 H1200 M1280 726 H1360 M1440 726 H1520"/></g>
-      <path d="M0 678 H1600" stroke="#a9a08b" stroke-width="6"/>
-      <g fill="#efe6d2"><rect x="0" y="560" width="210" height="200"/></g>
-      <path d="M-20 520 L240 566 V596 H-20Z" fill="#5d8f7e"/>
-      <ellipse cx="60" cy="690" rx="110" ry="70" fill="#3d7a4b"/><ellipse cx="1540" cy="700" rx="140" ry="80" fill="#3d7a4b"/>
+      <g stroke="#fff" stroke-width="3" fill="none" opacity=".55" stroke-linecap="round">
+        <path d="M120 480 q20 -10 40 0 t40 0"/><path d="M620 500 q22 -10 44 0 t44 0"/><path d="M1020 470 q22 -10 44 0 t44 0"/>
+        <path d="M1160 540 q24 -10 48 0 t48 0"/><path d="M700 580 q24 -10 48 0 t48 0"/><path d="M260 610 q24 -10 48 0 t48 0"/><path d="M880 612 q24 -10 48 0 t48 0"/>
+      </g>
+      <g class="boat" transform="translate(900 456)"><path d="M0 0 L0 -36 L24 0Z" fill="#fff"/><path d="M-4 0 L-4 -24 L-20 0Z" fill="#eaf4fb"/><path d="M-22 2 H28 L21 11 H-15Z" fill="#c9503a"/></g>
+      <g class="boat b2" transform="translate(1180 492) scale(.7)"><path d="M0 0 L0 -36 L24 0Z" fill="#fff"/><path d="M-4 0 L-4 -24 L-20 0Z" fill="#eaf4fb"/><path d="M-22 2 H28 L21 11 H-15Z" fill="#3d6fa3"/></g>
+
+      <!-- left island with lighthouse -->
+      <path d="M0 430 C60 376 150 354 240 370 C320 384 372 412 402 436Z" fill="#2f6b47"/>
+      <path d="M0 438 C50 394 140 378 220 394 C290 406 340 426 374 440Z" fill="url(#hill)"/>
+      <g fill="#1f5a3c"><path d="M40 402 l9 -26 l9 26Z"/><path d="M62 398 l8 -22 l8 22Z"/><path d="M262 408 l9 -26 l9 26Z"/><path d="M284 412 l8 -22 l8 22Z"/><path d="M306 418 l7 -18 l7 18Z"/></g>
+      <path d="M104 396 L110 316 H126 L132 396Z" fill="#f4f1e6"/><path d="M107 372 H129 L130 360 H106Z" fill="#d9472b"/><path d="M109 344 H127 L127.5 334 H108.5Z" fill="#d9472b"/>
+      <rect x="108" y="302" width="20" height="14" fill="#9ec3dc"/><path d="M105 302 L118 286 L131 302Z" fill="#d9472b"/>
+      <g><rect x="176" y="398" width="32" height="22" fill="#efe6d2"/><path d="M172 398 L192 380 L212 398Z" fill="#5d8f7e"/><rect x="186" y="404" width="6" height="9" fill="#f2c15a"/>
+         <rect x="218" y="404" width="26" height="18" fill="#f4eadb"/><path d="M214 404 L231 389 L248 404Z" fill="#c9503a"/><rect x="226" y="410" width="5" height="8" fill="#f2c15a"/></g>
+      <path d="M0 440 q20 -8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" stroke="#fff" stroke-width="3" fill="none" opacity=".85"/>
+
+      <!-- right island with torii -->
+      <path d="M1320 530 C1332 456 1396 424 1470 430 C1540 436 1590 474 1600 530Z" fill="url(#rock)"/>
+      <path d="M1344 470 C1374 430 1436 420 1478 428 C1528 436 1574 458 1600 488 L1600 500 C1560 474 1500 466 1450 468 C1410 470 1374 480 1344 494Z" fill="#4f8d5a"/>
+      <g fill="#d9472b"><rect x="1468" y="400" width="4" height="28"/><rect x="1494" y="400" width="4" height="28"/><path d="M1460 400 H1506 L1503 393 H1463Z"/><rect x="1467" y="408" width="32" height="3"/></g>
+      <g fill="#1f5a3c"><path d="M1400 442 l8 -24 l8 24Z"/><path d="M1536 454 l8 -22 l8 22Z"/></g>
+      <path d="M1300 532 q24 -9 48 0 t48 0 t48 0 t48 0 t48 0 t48 0" stroke="#fff" stroke-width="3" fill="none" opacity=".85"/>
+
+      <g fill="#6c6a68"><path d="M700 566 l26 -20 l36 6 l34 -12 l46 18 l-18 14 h-118z"/></g>
+      <g fill="#8a8886" opacity=".7"><path d="M720 552 l18 -8 l22 4 l-14 8z"/></g>
+
+      <path d="M0 650 Q400 624 800 642 T1600 634 V704 H0Z" fill="url(#sand)"/>
+      <path d="M0 648 Q400 622 800 640 T1600 632" stroke="#fff" stroke-width="4" fill="none" opacity=".9"/>
+      <rect y="676" width="1600" height="12" fill="#cfc6ae"/>
+      <path d="M0 662 H1600" stroke="#e9e4d4" stroke-width="5"/>
+      <path d="M0 674 H1600" stroke="#cfc7b2" stroke-width="22" stroke-dasharray="5 75"/>
+      <rect y="688" width="1600" height="80" fill="url(#road)"/>
+      <path d="M0 694 H1600" stroke="#f2eee0" stroke-width="3" opacity=".8"/>
+      <g stroke="#fff" stroke-width="5" opacity=".85"><path d="M0 730 H80 M160 730 H240 M320 730 H400 M480 730 H560 M640 730 H720 M800 730 H880 M960 730 H1040 M1120 730 H1200 M1280 730 H1360 M1440 730 H1520"/></g>
+
+      <g><rect x="0" y="566" width="214" height="200" fill="#f0e7d3"/><rect x="0" y="566" width="214" height="8" fill="#d9ceb4"/>
+         <path d="M-20 524 L246 570 V600 H-20Z" fill="#5d8f7e"/><path d="M-20 524 L246 570 V578 L-20 532Z" fill="#79ab99"/>
+         <rect x="34" y="618" width="46" height="60" fill="#8fb4cc"/><path d="M57 618 V678 M34 648 H80" stroke="#f0e7d3" stroke-width="4"/></g>
+      <g><ellipse cx="226" cy="690" rx="60" ry="44" fill="#3d7a4b"/>
+         <circle cx="206" cy="666" r="14" fill="#9aa8e6"/><circle cx="228" cy="660" r="15" fill="#b6a2e0"/><circle cx="250" cy="670" r="13" fill="#8fb2ee"/><circle cx="218" cy="680" r="13" fill="#a9b6f0"/><circle cx="240" cy="684" r="12" fill="#c3a9e6"/></g>
+      <ellipse cx="40" cy="706" rx="110" ry="60" fill="#3d7a4b"/>
+
+      <g transform="translate(1376 578)"><rect x="-10" y="-10" width="84" height="130" rx="14" fill="#fff3b0" opacity=".3" filter="url(#soft)"/>
+        <rect width="64" height="112" rx="5" fill="#d9472b"/><rect x="7" y="9" width="50" height="54" fill="#fdf6d8"/>
+        <g><rect x="11" y="13" width="10" height="16" fill="#3d8ed0"/><rect x="24" y="13" width="10" height="16" fill="#e8a13b"/><rect x="37" y="13" width="10" height="16" fill="#3fa36b"/><rect x="11" y="35" width="10" height="16" fill="#c95ea0"/><rect x="24" y="35" width="10" height="16" fill="#3d8ed0"/><rect x="37" y="35" width="10" height="16" fill="#e8a13b"/></g>
+        <rect x="7" y="72" width="50" height="9" rx="2" fill="#7a2415"/><rect x="18" y="90" width="28" height="16" rx="2" fill="#2a1410"/></g>
+      <ellipse cx="1540" cy="712" rx="150" ry="70" fill="#3d7a4b"/><ellipse cx="1470" cy="728" rx="110" ry="50" fill="#4a8d58"/>
     </svg>
 
+    <svg class="sakura" viewBox="0 0 440 270" aria-hidden="true">
+      <g fill="none" stroke="#5b3a2a" stroke-linecap="round">
+        <path d="M-10 34 C80 44 150 64 232 124 S350 196 440 176" stroke-width="9"/>
+        <path d="M120 56 C140 22 172 12 204 16" stroke-width="5"/>
+        <path d="M206 104 C224 154 254 194 276 246" stroke-width="5"/>
+        <path d="M300 160 C330 130 372 126 410 134" stroke-width="4"/>
+      </g>
+      <g>
+        <use href="#fl" x="20" y="14" width="34" height="34"/><use href="#fl" x="62" y="40" width="30" height="30"/><use href="#fl" x="104" y="30" width="36" height="36"/>
+        <use href="#fl" x="140" y="62" width="30" height="30"/><use href="#fl" x="170" y="0" width="30" height="30"/><use href="#fl" x="196" y="24" width="34" height="34"/>
+        <use href="#fl" x="226" y="86" width="32" height="32"/><use href="#fl" x="196" y="116" width="28" height="28"/><use href="#fl" x="238" y="150" width="30" height="30"/>
+        <use href="#fl" x="252" y="214" width="32" height="32"/><use href="#fl" x="266" y="124" width="28" height="28"/><use href="#fl" x="296" y="150" width="34" height="34"/>
+        <use href="#fl" x="340" y="116" width="30" height="30"/><use href="#fl" x="372" y="144" width="32" height="32"/><use href="#fl" x="52" y="2" width="26" height="26"/>
+        <use href="#fl" x="12" y="52" width="26" height="26"/><use href="#fl" x="154" y="30" width="24" height="24"/><use href="#fl" x="300" y="188" width="26" height="26"/>
+      </g>
+    </svg>
+    <div class="petals" id="petals" aria-hidden="true"></div>
+
     <div class="hero-copy">
+      <span class="hanko" aria-hidden="true">旅</span>
       <p class="est" id="est"></p>
       <h1 id="museumName">The Mafaru Museum</h1>
       <p class="tagline" id="tagline"></p>
       <div class="ticket" id="ticket" hidden><span id="banner"></span></div>
+      <button class="hero-search" id="heroSearch" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <span>Search any memory, person or place</span>
+      </button>
       <div class="hero-actions">
         <a class="btn" href="#street">Start the journey</a>
-        <button class="btn ghost" id="randomBtn" type="button">Pick a random memory</button>
+        <a class="btn ghost" href="#albums">Open the albums</a>
+        <button class="btn ghost" id="randomBtn" type="button">Random memory</button>
       </div>
+      <p class="stats" id="stats"></p>
     </div>
 
     <div class="line" id="line" aria-label="Featured memories hanging on the wire">
@@ -95,51 +187,70 @@
 
   <!-- STREET -->
   <section class="stop street" id="street">
-    <div class="stop-head">
+    <div class="stop-head reveal">
+      <span class="seal" aria-hidden="true">街</span>
       <h2>The Street</h2>
+      <svg class="brush" viewBox="0 0 200 12" aria-hidden="true"><path d="M2 7 C30 2 60 11 100 6 S170 3 198 7"/></svg>
       <p>Everyday snapshots, developed and hung to dry. Scroll sideways along the film.</p>
     </div>
     <div class="strip" id="strip" tabindex="0" aria-label="Film strip of street snapshots"></div>
   </section>
 
   <div class="divider" style="--prev:#efe5cc;--next:#4f3322" aria-hidden="true">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><defs><pattern id="roofs" width="180" height="60" patternUnits="userSpaceOnUse"><path d="M0 60V36L45 8l45 28v24Z M90 60V30l45-22 45 22v30Z" style="fill:var(--next)"/></pattern></defs><rect width="1200" height="60" fill="url(#roofs)"/></svg>
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><defs><pattern id="roofs" width="180" height="60" patternUnits="userSpaceOnUse"><path d="M0 60V36L45 8l45 28v24Z M90 60V30l45-22 45 22v30Z" style="fill:var(--next)"/><rect x="38" y="36" width="7" height="9" fill="#ffd27a" opacity=".85"/><rect x="128" y="34" width="7" height="9" fill="#ffd27a" opacity=".85"/></pattern></defs><rect width="1200" height="60" fill="url(#roofs)"/></svg>
   </div>
 
   <!-- CAFE -->
   <section class="stop cafe" id="cafe">
     <div class="lamp l1" aria-hidden="true"></div>
     <div class="lamp l2" aria-hidden="true"></div>
-    <div class="stop-head">
+    <div class="stop-head reveal">
       <div class="chalk">
+        <span class="seal on-dark" aria-hidden="true">喫茶</span>
         <h2>Hall of Fame Cafe</h2>
         <p>Today's specials: the legends that never leave the menu.</p>
       </div>
     </div>
     <div class="board" id="cafeWall"></div>
+    <svg class="shelf" viewBox="0 0 520 110" aria-hidden="true">
+      <rect x="0" y="86" width="520" height="14" rx="3" fill="#8a5a3a"/><rect x="0" y="86" width="520" height="4" fill="#a8734b"/><rect x="0" y="100" width="520" height="8" fill="#3c2517" opacity=".5"/>
+      <g class="cup"><path d="M60 86 V60 H98 V86Z" fill="#f6efe0"/><path d="M98 66 q16 0 16 12 q0 10 -16 10" fill="none" stroke="#f6efe0" stroke-width="5"/><rect x="60" y="60" width="38" height="5" fill="#d9472b"/>
+        <path class="steam" d="M70 54 q-6 -10 0 -18 q6 -8 0 -16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".55"/><path class="steam s2" d="M86 54 q-6 -10 0 -18 q6 -8 0 -16" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".45"/></g>
+      <g><path d="M200 86 l6 -22 h30 l6 22Z" fill="#c9503a"/><path d="M221 64 C200 52 196 30 214 22 C220 38 224 48 221 64 Z M221 64 C240 50 246 30 228 22 C222 38 218 48 221 64Z" fill="#4f9a5e"/><path d="M221 64 C221 44 221 36 221 26" stroke="#2f6b47" stroke-width="3" fill="none"/></g>
+      <g><rect x="320" y="52" width="64" height="34" rx="6" fill="#2a2a2e"/><rect x="334" y="44" width="22" height="10" rx="3" fill="#2a2a2e"/><circle cx="352" cy="69" r="12" fill="#444"/><circle cx="352" cy="69" r="7" fill="#7ab0d4"/><rect x="326" y="56" width="10" height="6" rx="2" fill="#d9472b"/></g>
+      <g><rect x="420" y="46" width="14" height="40" fill="#3d6fa3"/><rect x="436" y="52" width="12" height="34" fill="#c9503a"/><rect x="450" y="40" width="14" height="46" fill="#4f8d5a"/></g>
+    </svg>
   </section>
 
   <div class="divider" style="--prev:#5a3a27;--next:#bfe3f6" aria-hidden="true">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><defs><pattern id="waves" width="120" height="60" patternUnits="userSpaceOnUse"><path d="M0 34 Q30 6 60 34 T120 34 V60 H0Z" style="fill:var(--next)"/></pattern></defs><rect width="1200" height="60" fill="url(#waves)"/></svg>
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><defs><pattern id="waves" width="120" height="60" patternUnits="userSpaceOnUse"><path d="M0 40 Q30 12 60 40 T120 40 V60 H0Z" style="fill:var(--next);opacity:.55"/><path d="M0 46 Q30 20 60 46 T120 46 V60 H0Z" style="fill:var(--next)"/></pattern></defs><rect width="1200" height="60" fill="url(#waves)"/></svg>
   </div>
 
   <!-- SEASIDE -->
   <section class="stop seaside" id="seaside">
-    <div class="stop-head">
+    <svg class="sea-deco" viewBox="0 0 300 120" aria-hidden="true">
+      <g class="gull"><path d="M20 30 q10 -10 20 0 q10 -10 20 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M70 14 q8 -8 16 0 q8 -8 16 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/></g>
+      <g transform="translate(200 70)"><path d="M0 0 L0 -40 L28 0Z" fill="#fff"/><path d="M-5 0 L-5 -28 L-24 0Z" fill="#eaf4fb"/><path d="M-26 3 H32 L24 13 H-18Z" fill="#c9503a"/></g>
+    </svg>
+    <div class="stop-head reveal">
+      <span class="seal" aria-hidden="true">海</span>
       <h2>The Seaside Viewpoint</h2>
+      <svg class="brush" viewBox="0 0 200 12" aria-hidden="true"><path d="M2 7 C30 2 60 11 100 6 S170 3 198 7"/></svg>
       <p>The big scenic moments, printed large. Tap a print to look closer.</p>
     </div>
     <div class="prints" id="seaWall"></div>
   </section>
 
   <div class="divider" style="--prev:#6fb7de;--next:#e9efd9" aria-hidden="true">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><defs><pattern id="hills" width="200" height="60" patternUnits="userSpaceOnUse"><path d="M0 60 Q100 4 200 60Z M150 38 l9 -24 9 24Z" style="fill:var(--next)"/></pattern></defs><rect width="1200" height="60" fill="url(#hills)"/></svg>
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><defs><pattern id="hills" width="240" height="60" patternUnits="userSpaceOnUse"><path d="M0 60 Q120 6 240 60Z" style="fill:var(--next);opacity:.6"/><path d="M-60 60 Q60 18 180 60Z M170 40 l8 -22 l8 22Z M190 44 l7 -18 l7 18Z" style="fill:var(--next)"/></pattern></defs><rect width="1200" height="60" fill="url(#hills)"/></svg>
   </div>
 
   <!-- TRAVELERS -->
   <section class="stop travelers" id="travelers">
-    <div class="stop-head">
+    <div class="stop-head reveal">
+      <span class="seal" aria-hidden="true">旅人</span>
       <h2>The Travelers</h2>
+      <svg class="brush" viewBox="0 0 200 12" aria-hidden="true"><path d="M2 7 C30 2 60 11 100 6 S170 3 198 7"/></svg>
       <p>The people responsible for this trip.</p>
     </div>
     <div class="passports" id="passports"></div>
@@ -147,83 +258,175 @@
 
   <!-- POSTCARDS -->
   <section class="stop postcards" id="postcards">
-    <div class="stop-head">
+    <div class="stop-head reveal">
+      <span class="seal" aria-hidden="true">葉書</span>
       <h2>Postcards Home</h2>
+      <svg class="brush" viewBox="0 0 200 12" aria-hidden="true"><path d="M2 7 C30 2 60 11 100 6 S170 3 198 7"/></svg>
       <p>Things that were said out loud and cannot be unsaid.</p>
     </div>
     <div class="cards" id="postcardWall"></div>
   </section>
 
-  <div class="divider" style="--prev:#f4ecd8;--next:#151a36" aria-hidden="true">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><defs><pattern id="night" width="180" height="60" patternUnits="userSpaceOnUse"><path d="M0 60V36L45 8l45 28v24Z M90 60V30l45-22 45 22v30Z" style="fill:var(--next)"/></pattern></defs><rect width="1200" height="60" fill="url(#night)"/></svg>
+  <div class="divider sunset" aria-hidden="true">
+    <svg viewBox="0 0 1200 90" preserveAspectRatio="none"><defs><linearGradient id="sunsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4ecd8"/><stop offset="1" stop-color="#ffd9b0"/></linearGradient></defs>
+      <rect width="1200" height="90" fill="url(#sunsky)"/><circle cx="880" cy="78" r="34" fill="#ffb27a" opacity=".9"/>
+      <path d="M0 90 V64 C120 40 220 70 340 54 C460 38 560 70 700 56 C820 44 960 72 1080 52 C1140 44 1180 52 1200 56 V90Z" fill="#f1a06c" opacity=".7"/>
+      <path d="M0 90 V74 C140 56 260 82 400 70 C540 58 640 84 780 72 C920 62 1040 82 1200 70 V90Z" fill="#ffb27a"/></svg>
   </div>
 
-  <!-- ALLEY -->
-  <section class="stop alley" id="alley">
+  <!-- BILLBOARD -->
+  <section class="stop billboard" id="billboard">
+    <div class="bb-sun" aria-hidden="true"></div>
+    <div class="stop-head reveal">
+      <span class="seal on-dark" aria-hidden="true">看板</span>
+      <h2>The Billboard</h2>
+      <svg class="brush" viewBox="0 0 200 12" aria-hidden="true"><path d="M2 7 C30 2 60 11 100 6 S170 3 198 7"/></svg>
+      <p>Our most beautiful and memorable photographs, lit up for everyone to see.</p>
+    </div>
+    <div class="bb" id="bb">
+      <div class="bb-lamps" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="bb-board">
+        <div class="bb-screen" id="bbScreen" tabindex="0" aria-label="Billboard photo. Use the arrow keys to change photo."></div>
+        <button class="bb-nav prev" id="bbPrev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24"><path d="M15 5L8 12l7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="bb-nav next" id="bbNext" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="bb-posts" aria-hidden="true"><i></i><i></i></div>
+    </div>
+    <div class="bb-info" id="bbInfo"></div>
+    <div class="bb-thumbs" id="bbThumbs"></div>
+  </section>
+
+  <div class="divider" style="--prev:#2a2a5c;--next:#1b1f45" aria-hidden="true">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><defs><pattern id="skyline" width="240" height="60" patternUnits="userSpaceOnUse"><path d="M0 60V40h18V24h22V40h14V18h26V40h20V30h24V60Z M130 60V34h20V14h24V34h18V26h26V60Z" style="fill:var(--next)"/><rect x="26" y="30" width="5" height="6" fill="#ffd27a"/><rect x="140" y="22" width="5" height="6" fill="#ffd27a"/><rect x="160" y="40" width="5" height="6" fill="#ffd27a"/></pattern></defs><rect width="1200" height="60" fill="url(#skyline)"/></svg>
+  </div>
+
+  <!-- ALBUMS -->
+  <section class="stop albums" id="albums">
+    <div class="moon" aria-hidden="true"></div>
     <div class="lanterns" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="stop-head">
-      <h2>The Night Alley</h2>
-      <p>Past the gate, where the cursed material is kept.</p>
+    <div class="stop-head reveal">
+      <span class="seal on-dark" aria-hidden="true">仲間</span>
+      <h2>The Albums</h2>
+      <svg class="brush" viewBox="0 0 200 12" aria-hidden="true"><path d="M2 7 C30 2 60 11 100 6 S170 3 198 7"/></svg>
+      <p>Memories grouped by person, trip or theme. Open a folder to see everything inside.</p>
     </div>
-    <div class="gate" id="gate">
-      <svg class="torii" viewBox="0 0 200 150" aria-hidden="true">
-        <path d="M8 26 Q100 6 192 26 L188 42 Q100 26 12 42Z" fill="#d9472b"/>
-        <rect x="26" y="54" width="148" height="10" fill="#d9472b"/>
-        <rect x="46" y="40" width="14" height="104" fill="#d9472b"/><rect x="140" y="40" width="14" height="104" fill="#d9472b"/>
-        <rect x="40" y="136" width="26" height="10" fill="#1a1512"/><rect x="134" y="136" width="26" height="10" fill="#1a1512"/>
-      </svg>
-      <form class="lock" id="lockForm" autocomplete="off">
-        <label for="pw">Say the word to walk in</label>
-        <div class="lock-row">
-          <input id="pw" type="password" autocomplete="off">
-          <button class="btn" type="submit">Enter</button>
-        </div>
-        <p class="lock-msg" id="lockMsg" role="status"></p>
-      </form>
+    <div class="tabs" role="tablist" aria-label="Browse by">
+      <button class="tab on" id="tabGroups" role="tab" aria-selected="true" type="button" data-tab="groups">Albums</button>
+      <button class="tab" id="tabTags" role="tab" aria-selected="false" type="button" data-tab="tags">Tags</button>
     </div>
-    <div class="prints dark" id="alleyWall" hidden></div>
+    <div class="folders" id="folders"></div>
+    <div class="tagcloud" id="tagcloud" hidden></div>
   </section>
 </main>
 
 <footer class="footer">
-  <p id="footName"></p>
+  <nav class="stations" aria-label="Back to a stop">
+    <a href="#top">Start</a><a href="#street">Street</a><a href="#cafe">Cafe</a><a href="#seaside">Seaside</a><a href="#billboard">Billboard</a><a href="#albums">Albums</a>
+  </nav>
+  <p class="foot-name" id="footName"></p>
   <p class="donors" id="donors"></p>
+  <a class="btn ghost" href="#top">Back to the start</a>
   <p class="small">Thank you for travelling with us. Please take only photographs.</p>
 </footer>
+</div>
+
+<!-- Dock: filters and sound -->
+<div class="dock" id="dock">
+  <div class="pop" id="popLook" hidden role="dialog" aria-label="Photo filter">
+    <p class="pop-title">Photo filter</p>
+    <div class="looks" role="radiogroup" aria-label="Photo filter">
+      <button type="button" class="look" role="radio" aria-checked="true" data-theme="day"><i></i>Day</button>
+      <button type="button" class="look" role="radio" aria-checked="false" data-theme="sepia"><i></i>Sepia film</button>
+      <button type="button" class="look" role="radio" aria-checked="false" data-theme="bw"><i></i>Black and white</button>
+      <button type="button" class="look" role="radio" aria-checked="false" data-theme="night"><i></i>Night</button>
+    </div>
+    <label class="check"><input type="checkbox" id="catToggle" checked> Show the station cat</label>
+  </div>
+  <div class="pop" id="popSound" hidden role="dialog" aria-label="Ambient sound">
+    <p class="pop-title">Ambient sound</p>
+    <button class="switch" id="soundSwitch" type="button" role="switch" aria-checked="false"><span class="knob"></span><b id="soundState">Off</b></button>
+    <label class="vol">Volume <input type="range" id="vol" min="0" max="100" value="50"></label>
+    <p class="pop-note" id="soundNow">Turn it on for sea, street and cafe sounds that change as you scroll.</p>
+  </div>
+  <button class="dock-btn" id="lookBtn" type="button" aria-expanded="false" aria-controls="popLook">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17Z" fill="currentColor"/></svg><span>Look</span>
+  </button>
+  <button class="dock-btn" id="soundBtn" type="button" aria-expanded="false" aria-controls="popSound">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h4l5-4v13l-5-4H4Z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Sound</span>
+  </button>
+</div>
 
 <!-- Station cat -->
-<button class="cat" id="cat" type="button" aria-label="Pet the station cat">
-  <span class="cat-bubble" id="catBubble" hidden></span>
-  <span class="cat-face" aria-hidden="true">
-    <svg viewBox="0 0 64 64" width="46" height="46"><path d="M10 28 L14 8 L28 18Z M54 28 L50 8 L36 18Z" fill="#e8a65e"/><circle cx="32" cy="36" r="22" fill="#f1b673"/><path d="M20 30 q5 -8 12 -2 q7 -6 12 2" fill="#e8a65e" stroke="none"/><circle cx="24" cy="36" r="2.6" fill="#23303a"/><circle cx="40" cy="36" r="2.6" fill="#23303a"/><path d="M30 42 l2 2 l2 -2Z" fill="#c8553d"/><path d="M26 47 Q32 51 38 47" stroke="#23303a" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M8 40 H18 M8 46 L18 44 M56 40 H46 M56 46 L46 44" stroke="#23303a" stroke-width="1.2" stroke-linecap="round"/></svg>
-  </span>
-</button>
+<div class="cat" id="cat">
+  <p class="cat-bubble" id="catBubble" hidden></p>
+  <button class="cat-btn" id="catBtn" type="button" aria-label="Pet the station cat"><span class="cat-face" id="catFace"></span><span class="hearts" id="hearts" aria-hidden="true"></span></button>
+</div>
 
-<!-- Viewfinder modal -->
+<!-- Album / tag sheet -->
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-back" id="sheetBack"></div>
+  <section class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="sTitle">
+    <button class="btn small ghost sheet-close" id="sheetClose" type="button">Close</button>
+    <header class="sheet-head">
+      <p class="sheet-kind" id="sKind">Album</p>
+      <h3 id="sTitle"></h3>
+      <p class="sheet-desc" id="sDesc"></p>
+      <p class="sheet-count" id="sCount"></p>
+    </header>
+    <div class="sheet-grid" id="sGrid"></div>
+  </section>
+</div>
+
+<!-- Search -->
+<div class="search" id="search" hidden>
+  <div class="search-back" id="searchBack"></div>
+  <div class="search-card" role="dialog" aria-modal="true" aria-label="Search memories">
+    <div class="search-bar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <input id="q" type="search" placeholder="Search title, story, place, album or tag" autocomplete="off" spellcheck="false" aria-label="Search memories">
+      <button class="btn small ghost" id="searchClose" type="button">Close</button>
+    </div>
+    <div class="search-filters" id="qFilters" role="group" aria-label="Filter by area"></div>
+    <p class="search-count" id="qCount" aria-live="polite"></p>
+    <div class="search-results" id="qResults"></div>
+    <div class="search-quick" id="qQuick"></div>
+  </div>
+</div>
+
+<!-- Viewfinder -->
 <div class="modal" id="modal" hidden>
   <div class="modal-back" id="modalBack"></div>
   <article class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mTitle">
     <div class="finder">
-      <div class="finder-frame">
-        <img id="mImg" alt="">
+      <div class="finder-frame" id="finderFrame">
+        <div class="finder-scroll" id="finderScroll"><img id="mImg" alt=""></div>
+        <span class="grid3" aria-hidden="true"></span>
+        <span class="af" aria-hidden="true"></span>
         <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         <span class="hud hud-tl">AUTO &nbsp; ISO 400</span>
-        <span class="hud hud-tr">[ ||| ]</span>
+        <span class="hud hud-tr" aria-hidden="true"><svg viewBox="0 0 30 14" width="30" height="14"><rect x="1" y="1" width="25" height="12" rx="2.5" fill="none" stroke="#fff" stroke-width="1.6"/><rect x="27" y="4.5" width="2.5" height="5" fill="#fff"/><rect x="3.5" y="3.5" width="5" height="7" fill="#fff"/><rect x="10" y="3.5" width="5" height="7" fill="#fff"/><rect x="16.5" y="3.5" width="5" height="7" fill="#fff"/></svg></span>
         <span class="hud hud-bl" id="mStamp"></span>
         <span class="hud hud-br" id="mCount"></span>
+      </div>
+      <div class="finder-tools">
+        <button class="tool" id="mPrev" type="button">&lsaquo; Prev</button>
+        <button class="tool" id="mZoom" type="button">Zoom in</button>
+        <button class="tool" id="mNext" type="button">Next &rsaquo;</button>
       </div>
     </div>
     <div class="journal">
       <div class="journal-top">
-        <button class="btn small" id="modalNext" type="button">Next memory</button>
-        <button class="btn small ghost" id="modalClose" type="button">Close</button>
+        <button class="btn small ghost" id="mCopy" type="button">Copy link</button>
+        <button class="btn small" id="modalClose" type="button">Close</button>
       </div>
       <h3 id="mTitle"></h3>
       <p class="where" id="mWhere"></p>
+      <div class="chips" id="mChips"></div>
       <p class="m-lore" id="mLore"></p>
       <p class="m-note" id="mNote"></p>
     </div>
   </article>
+  <div class="flash" id="flash" aria-hidden="true"></div>
 </div>
 
 <noscript><p style="padding:2rem;text-align:center">This museum needs JavaScript turned on.</p></noscript>

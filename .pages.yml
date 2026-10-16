@@ -27,12 +27,21 @@ content:
           - name: wing
             label: Where does it hang?
             type: select
-            description: "street = everyday snapshots (film strip), cafe = Hall of Fame, seaside = big scenic moments, alley = secret (needs the password)"
+            description: "street = everyday snapshots (film strip), cafe = Hall of Fame, seaside = big scenic moments, billboard = our most beautiful photos (big lit-up screen)"
             options:
-              values: [street, cafe, seaside, alley]
+              values: [street, cafe, seaside, billboard]
           - name: image
             label: Picture
             type: image
+          - name: group
+            label: Album (a person, trip or theme)
+            type: string
+            description: "Type the same name each time, like Abdul. Memories with the same album go into one folder in The Albums."
+          - name: tags
+            label: Tags
+            type: string
+            list: true
+            description: "Add as many as you like, like bus trip or snacks. Tags make memories easy to find."
           - name: place
             label: Place (where it happened)
             type: string
@@ -54,6 +63,30 @@ content:
           - name: lore
             label: The story behind it
             type: text
+
+  - name: groups
+    label: Album details (optional)
+    type: file
+    path: groups.json
+    format: json
+    fields:
+      - name: groups
+        label: Albums
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - name: name
+            label: Album name (spell it exactly like on the memories)
+            type: string
+          - name: description
+            label: Short description
+            type: text
+          - name: cover
+            label: Cover picture (optional)
+            type: image
 
   - name: portraits
     label: Travelers
@@ -124,13 +157,7 @@ content:
       - name: currentExhibition
         label: Ticket banner on the front page
         type: string
-      - name: restrictedPassword
-        label: Night Alley password
-        type: string
-      - name: restrictedHint
-        label: Night Alley hint
-        type: string
       - name: guardLines
-        label: Things the station cat says
+        label: Extra things the station cat says
         type: string
         list: true
