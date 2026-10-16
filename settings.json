@@ -3,12 +3,9 @@
   "established": "2026",
   "tagline": "A little trip through the moments only we understand.",
   "currentExhibition": "Board the train and explore the journey.",
-  "restrictedPassword": "mafaru",
-  "restrictedHint": "Hint: the name on the ticket, all lowercase.",
   "guardLines": [
     "Mrrp. Mind the frames.",
     "Every snapshot here has a story. Tap one.",
-    "The night alley is for people who know the word.",
     "Purr. Next stop: the cafe."
   ]
 }
