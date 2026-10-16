@@ -1,3 +1,9 @@
 {
-  "groups": []
+  "groups": [
+    {
+      "name": "Abdul",
+      "description": "A collection of Abdul's existence",
+      "cover": "/images/picsart25-04-2809-43-31-354-1.jpg"
+    }
+  ]
 }
